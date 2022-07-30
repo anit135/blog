@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Models\Comment;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/articles', [HomeController::class, 'show_all_articles'])->name('show_all_articles');
+Route::get('/articles/{slug}', [HomeController::class, 'show_article'])->name('show_article');
+Route::post('/articles/{slug}', [CommentController::class, 'send'])->name('comment_send');
