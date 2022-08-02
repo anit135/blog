@@ -17,11 +17,15 @@
 
             <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..."></figure>
 
-            <section class="mb-5">
+            <section class="">
                 @foreach($article->text as $paragraph)
                 <p class="fs-5 mb-4">{{ $paragraph }}</p>
                 @endforeach
             </section>
+
+            <div class="text-end">
+                @include('includes.label_like_view')
+            </div>
 
             @include('includes.form_comment')
         </div>

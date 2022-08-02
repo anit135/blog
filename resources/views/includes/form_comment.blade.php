@@ -1,4 +1,4 @@
-<section class="mb-5">
+<section class="mb-4 mt-4">
     <div class="card bg-light">
         <div class="card-body">
             <!-- Comment form-->
@@ -35,7 +35,7 @@
 
     jQuery(".btn-submit").click(function(e) {
 
-        e.preventDefault();
+        // e.preventDefault();
 
         var article_id = $("#article_id").val();
         var title = $("#title").val();
@@ -51,8 +51,6 @@
             },
             success: function(data) {
                 if ($.isEmptyObject(data.error)) {
-                    // alert(data.success);
-                    // location.reload();
                     printMsg('success', data.success);
                 } else {
                     printMsg('error', data.error);

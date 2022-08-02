@@ -26,6 +26,9 @@
                         <div class="p-1 border border-secondary rounded-1 d-inline-block mb-1">{{ $tag_article->title }}</div>
                         @endforeach
                     </div>
+                    <div class="text-end">
+                        @include('includes.show_likes_views')
+                    </div>
                     <a class=" btn btn-primary" href="{{ route('show_article', $article->slug) }}">Read more →</a>
                 </div>
             </div>

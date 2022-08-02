@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
-    public function send(Request $request, $slug)
+    public function send(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'title' => 'required',

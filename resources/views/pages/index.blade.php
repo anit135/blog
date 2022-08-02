@@ -19,6 +19,8 @@
                     </a>
                     <p class="card-text">{{ Str::of(head($article->text))->limit(100) }}</p>
                     <!-- <a class="btn btn-primary" href="#!">Read more →</a> -->
+
+                    @include('includes.show_likes_views')
                 </div>
             </div>
         </div>

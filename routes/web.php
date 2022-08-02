@@ -20,3 +20,5 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::get('/articles', [HomeController::class, 'show_all_articles'])->name('show_all_articles');
 Route::get('/articles/{slug}', [HomeController::class, 'show_article'])->name('show_article');
 Route::post('/articles/{slug}', [CommentController::class, 'send'])->name('comment_send');
+Route::put('/articles/{id}/view', [HomeController::class, 'view_up'])->name('view_up');
+Route::put('/articles/{id}/like', [HomeController::class, 'like_up'])->name('like_up');

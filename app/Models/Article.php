@@ -9,6 +9,8 @@ class Article extends Model
 {
     use HasFactory;
 
+    //protected $fillabe = ['amount_views'];
+
     protected $casts = [
         'text' => 'array',
     ];
