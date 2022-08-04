@@ -27,15 +27,8 @@
 </section>
 
 <script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $("input[name=_token]").val()
-        }
-    });
-
-    jQuery(".btn-submit").click(function(e) {
-
-        // e.preventDefault();
+    $(".btn-submit").click(function(e) {
+        e.preventDefault();
 
         var article_id = $("#article_id").val();
         var title = $("#title").val();
@@ -45,6 +38,7 @@
             type: 'POST',
             url: "{{ route('comment_send', $article->slug) }}",
             data: {
+                _token: '{{csrf_token()}}',
                 article_id: article_id,
                 title: title,
                 body_comment: body_comment
