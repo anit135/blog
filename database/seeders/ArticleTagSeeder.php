@@ -18,10 +18,6 @@ class ArticleTagSeeder extends Seeder
      */
     public function run()
     {
-        Article::factory()->hasComments(2)->count(10)->create();
-
-        Tag::factory()->count(20)->create();
-
         $tagIds = Tag::pluck('id')->toArray();
         $articleIds = Article::pluck('id')->toArray();
 
