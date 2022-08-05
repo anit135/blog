@@ -8436,6 +8436,11 @@ fieldset:disabled .btn {
   color: #6c757d !important;
 }
 
+.tag-link .active {
+  background-color: #6c757d;
+  color: white !important;
+}
+
 .text-black-50 {
   --bs-text-opacity: 1;
   color: rgba(0, 0, 0, 0.5) !important;

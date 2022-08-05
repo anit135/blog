@@ -33,8 +33,6 @@ class HomeController extends Controller
 
         $article = Article::where('slug', $slug)->first();
 
-        // dd($article->comments->sortDesc());
-
         return view('pages.show_article', [
             "article" => $article
         ]);
@@ -60,5 +58,17 @@ class HomeController extends Controller
 
         $flight = Article::find($request->id);
         return response()->json(['success' => $flight->amount_likes]);
+    }
+
+    public function get_articles_by_tag($tag_slug)
+    {
+        $tags = Tag::all();
+        $articles = Tag::where('slug', $tag_slug)->first()->articlesTag()->latest()->paginate(2);
+
+        return view('pages.show_all_articles', [
+            "tag_slug" => $tag_slug,
+            "tags" => $tags,
+            "articles" => $articles
+        ]);
     }
 }

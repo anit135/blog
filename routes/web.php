@@ -22,3 +22,4 @@ Route::get('/articles/{slug}', [HomeController::class, 'show_article'])->name('s
 Route::post('/articles/{slug}', [CommentController::class, 'send'])->name('comment_send');
 Route::put('/articles/{id}/view', [HomeController::class, 'view_up'])->name('view_up');
 Route::put('/articles/{id}/like', [HomeController::class, 'like_up'])->name('like_up');
+Route::get('/articles/tag/{tag_slug}', [HomeController::class, 'get_articles_by_tag'])->name('get_articles_by_tag');

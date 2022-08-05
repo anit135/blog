@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tag>
@@ -16,8 +17,10 @@ class TagFactory extends Factory
      */
     public function definition()
     {
+        $title = fake()->unique()->words(rand(1, 3), true);
         return [
-            'title' => fake()->unique()->word
+            'title' => $title,
+            'slug' => Str::slug($title),
         ];
     }
 }
