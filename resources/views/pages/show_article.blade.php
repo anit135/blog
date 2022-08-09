@@ -11,7 +11,7 @@
                 <div class="text-muted fst-italic mb-2">{{ $article->created_at }}</div>
                 <!-- Post categories-->
                 @foreach($article->tagsArticle as $tag)
-                <a class="badge bg-secondary text-decoration-none link-light" href="#!">{{ $tag->title }}</a>
+                <a class="badge bg-secondary text-decoration-none link-light" href="{{ route('get_articles_by_tag', $tag->slug) }}">{{ $tag->title }}</a>
                 @endforeach
             </header>
 
