@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\ProcessComment;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -21,13 +22,8 @@ class CommentController extends Controller
             ]);
         }
 
-        Comment::create([
-            'article_id' => $request->article_id,
-            'title' => $request->title,
-            'body_comment' => $request->body_comment
-        ]);
+        ProcessComment::dispatch($request->article_id, $request->title, $request->body_comment);
 
-        // return back();
-        // return response()->json(['success' => 'Comment created successfully.']);
+        return response()->json(['success' => 'Your message has been sent successfully']);
     }
 }

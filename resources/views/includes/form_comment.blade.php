@@ -3,7 +3,6 @@
         <div class="card-body">
             <!-- Comment form-->
             <div class="mb-4 alert print_msg" style="display:none">
-                <ul class="mb-0"></ul>
             </div>
             <form method="" action="" class="">
                 @csrf
@@ -49,23 +48,32 @@
                 } else {
                     printMsg('error', data.error);
                 }
+            },
+            error: function(jqXhr, textStatus, errorMessage) {
+                printMsg('error', errorMessage); //jqXhr.responseJSON.message
             }
         });
     });
 
     function printMsg(type, msg) {
-        $(".print_msg").find("ul").html('');
+        $(".print_msg").html('');
         $(".print_msg").css('display', 'block');
         if (type == 'success') {
             $(".print_msg").addClass('alert-success');
             $(".print_msg").removeClass('alert-danger');
-            $(".print_msg").find("ul").append('Your message has been sent successfully');
+            $(".print_msg").append(msg);
             $("form").css('display', 'none');
         } else if (type == 'error') {
             $(".print_msg").addClass('alert-danger');
-            $.each(msg, function(key, value) {
-                $(".print_msg").find("ul").append('<li>' + value + '</li>');
-            });
+            if (msg.constructor === Array) {
+                $(".print_msg").append('<ul class="mb-0">');
+                $.each(msg, function(key, value) {
+                    $(".print_msg").find("ul").append('<li>' + value + '</li>');
+                });
+                $(".print_msg").append('</ul>');
+            } else {
+                $(".print_msg").append(msg);
+            }
         }
     }
 </script>
