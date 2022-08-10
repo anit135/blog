@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Article;
 use App\Models\Tag;
 
-class HomeController extends Controller
+class ArticleController extends Controller
 {
     public function index()
     {
