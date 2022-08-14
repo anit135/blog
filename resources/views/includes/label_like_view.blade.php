@@ -33,7 +33,7 @@
 
                   flag = !flag;
               },
-              error: function(data, textStatus, errorThrown) {
+              error: function(data, textStatus, errorMessage) {
                   console.log('error');
                   console.log(data.error);
               },
@@ -50,7 +50,7 @@
               success: function(data) {
                   $('#l_view').text(data.success);
               },
-              error: function(data, textStatus, errorThrown) {
+              error: function(data, textStatus, errorMessage) {
                   console.log('error');
                   console.log(data.error);
               },

@@ -9,9 +9,16 @@ use Illuminate\Support\Facades\Validator;
 
 class CommentController extends Controller
 {
-    public function send(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'article_id' => 'required',
             'title' => 'required',
             'body_comment' => 'required',
         ]);

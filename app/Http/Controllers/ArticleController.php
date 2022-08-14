@@ -40,23 +40,21 @@ class ArticleController extends Controller
 
     public function view_up(Request $request)
     {
-        $flight = Article::find($request->id);
+        $flight = Article::findOrFail($request->id);
         $flight->amount_views = ++$flight->amount_views;
         $flight->save();
 
-        $flight = Article::find($request->id);
+        $flight = Article::findOrFail($request->id);
         return response()->json(['success' => $flight->amount_views]);
     }
 
     public function like_up(Request $request)
     {
-        $flight = Article::find($request->id);
-
+        $flight = Article::findOrFail($request->id);
         $flight->amount_likes = $request->flag === 'true' ? ++$flight->amount_likes : --$flight->amount_likes;
-
         $flight->save();
 
-        $flight = Article::find($request->id);
+        $flight = Article::findOrFail($request->id);
         return response()->json(['success' => $flight->amount_likes]);
     }
 

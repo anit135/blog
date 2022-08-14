@@ -35,7 +35,7 @@
 
         $.ajax({
             type: 'POST',
-            url: "{{ route('comment_send', $article->slug) }}",
+            url: "{{ route('comment.store') }}",
             data: {
                 _token: '{{csrf_token()}}',
                 article_id: article_id,
@@ -50,7 +50,8 @@
                 }
             },
             error: function(jqXhr, textStatus, errorMessage) {
-                printMsg('error', errorMessage); //jqXhr.responseJSON.message
+                printMsg('error', errorMessage);
+                // console.log(jqXhr.responseJSON.message);
             }
         });
     });

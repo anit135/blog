@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ArticleController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::apiResource('/comment', CommentController::class)->only([
+    'store'
+]);
+
+Route::put('/articles/{id}/view', [ArticleController::class, 'view_up'])->name('view_up');
+Route::put('/articles/{id}/like', [ArticleController::class, 'like_up'])->name('like_up');

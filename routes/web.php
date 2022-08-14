@@ -18,8 +18,4 @@ use App\Http\Controllers\ArticleController;
 Route::get('/', [ArticleController::class, 'index'])->name('index');
 Route::get('/articles', [ArticleController::class, 'show_all_articles'])->name('show_all_articles');
 Route::get('/articles/{slug}', [ArticleController::class, 'show_article'])->name('show_article');
-Route::put('/articles/{id}/view', [ArticleController::class, 'view_up'])->name('view_up');
-Route::put('/articles/{id}/like', [ArticleController::class, 'like_up'])->name('like_up');
 Route::get('/articles/tag/{tag_slug}', [ArticleController::class, 'get_articles_by_tag'])->name('get_articles_by_tag');
-
-Route::post('/articles/{slug}', [CommentController::class, 'send'])->name('comment_send');
